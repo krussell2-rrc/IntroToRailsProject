@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  primary_language: MyString
+  first_publish_year: 1
+  edition_count: 1
+  cover_identifier: 1
+
+two:
+  title: MyString
+  primary_language: MyString
+  first_publish_year: 1
+  edition_count: 1
+  cover_identifier: 1
