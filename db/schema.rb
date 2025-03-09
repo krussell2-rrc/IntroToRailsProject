@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_24_171407) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_09_004648) do
   create_table "author_books", force: :cascade do |t|
     t.integer "book_id", null: false
     t.integer "author_id", null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_171407) do
     t.integer "cover_identifier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "subject"
   end
 
   add_foreign_key "author_books", "authors"
