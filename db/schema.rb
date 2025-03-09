@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_09_004648) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_09_013901) do
   create_table "author_books", force: :cascade do |t|
     t.integer "book_id", null: false
     t.integer "author_id", null: false
@@ -30,13 +30,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_09_004648) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.string "primary_language"
     t.integer "first_publish_year"
     t.integer "edition_count"
     t.integer "cover_identifier"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "subject"
+    t.string "work_key"
+    t.string "description"
   end
 
   add_foreign_key "author_books", "authors"

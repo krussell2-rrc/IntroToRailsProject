@@ -1,9 +1,24 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'httparty'
+
+subjects = [ "Horror", "Fantasy", "Romance", "Poetry", "Thriller" ]
+
+subjects.each do |subject|
+  # Defining API URL for different subjects
+  encoded_term = URI.encode_www_form_component(subject)
+  url = "https://openlibrary.org/subjects/#{encoded_term}.json?limit=50"
+
+  # Making the request
+  response = HTTParty.get(url)
+
+  # Parsing the response JSON
+  data = JSON.parse(response.body)
+
+  if data["works"]
+    data["works"].each do |work|
+      title = work["title"] || "Unknown Title"
+      first_publish_year = work["first_publish_year"]
+      edition_count = work["edition_count"] || 0
+      cover_identifier = work["cover_id"]
+    end
+  end
+end
