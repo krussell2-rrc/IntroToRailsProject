@@ -1,3 +1,5 @@
 class Author < ApplicationRecord
-  validates :author_name, :top_work, :work_count, presence: true
+  has_many :author_books
+  has_many :books, through: :author_books
+  validates :author_name, :author_key, :biography, presence: true
 end
