@@ -1,2 +1,17 @@
-<h1>About#about</h1>
-<p>Find me in app/views/about/about.html.erb</p>
+<%content_for :title, "About"%>
+<h1>About Page</h1>
+<%# Project overview %>
+<p>This project utilizies the "Subjects", "Work & Edition", & "Authors" APIs from OpenLibrary's Index of APIS to create a navigable and searchable index of
+horror, fantasy, romance, poetry, and thriller books.</p>
+<%# Subjects API %>
+<p>Subjects API - This API is used to fetch data from books that belong to a specific subject/genre.
+It returns the "title", "first_publish_year", "edition_count", "cover_id", "author_key" and "work_key" of each book.</p>
+<%# Work & Edition API %>
+<p>Work & Edition API - This API is used to fetch the description of each book since it is not available in the "Subjects API" response.
+It takes the "work_key" from the "Subjects API" response to make a JSON request to the "Work & Edition API" and returns the
+description of each book.
+</p>
+<%# Authors API %>
+<p>Authors API - This API is used to fetch data for the author of each book. It takes the "author_key" from the "Subjects API" response to make
+  a JSON request to the "Authors API" and returns the "name" and "bio" of each author.
+</p>
