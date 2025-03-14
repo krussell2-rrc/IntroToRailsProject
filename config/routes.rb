@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "about/about"
   get "/about", to: "about#about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
