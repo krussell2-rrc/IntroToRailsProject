@@ -1,2 +1,18 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<div class="container">
+  <%@books.group_by(&:subject).each do |subject, books|%>
+    <section class="hero is-info is-small">
+      <div class="hero-body is-flex is-justify-content-space-between">
+        <h3 class=" is-size-5 has-text-weight-bold is-capitalized"><%=subject%> Books</h3>
+        <a href="">See More ></a>
+      </div>
+    </section>
+    <div class="columns mt-5">
+          <% books.first(5).each do |book| %>
+            <div class="column is-flex-direction-column">
+              <img style="width: 180px; height: 280px; object-fit: cover;" src="https://covers.openlibrary.org/b/id/<%=book.cover_identifier%>-M.jpg" alt="<%=book%> Cover Art">
+              <p class=""><%= link_to book.title, books_path(book)%></p>
+            </div>
+          <%end%>
+  </div>
+  <% end %>
+</div>
