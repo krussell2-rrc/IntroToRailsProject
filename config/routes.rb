@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "/about", to: "about#about"
-  resources :books, only: [ :index, :show ]
+  resources :books, path: "index", only: [ :index, :show ]
+  resources :all_books, path: "books", only: [ :index, :show ]
   resources :authors, only: [ :index, :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,0 +1,10 @@
+<%content_for :title, "Books"%>
+<h1 class="title is-1 has-text-centered">Our Book Collection</h1>
+  <div class="grid is-col-min-12">
+  <% @books.each do |book| %>
+    <div class="cell ml-5">
+      <img style="width: 180px; height: 280px; object-fit: cover;" src="https://covers.openlibrary.org/b/id/<%=book.cover_identifier%>-M.jpg" alt="<%=book.title%> Cover Art">
+      <p><%= link_to book.title, book%></p>
+      </div>
+  <%end%>
+  </div>
