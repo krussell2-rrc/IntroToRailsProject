@@ -1,3 +1,4 @@
+<%content_for :title, "Books"%>
 <div class="container">
   <%@books.group_by(&:subject).each do |subject, books|%>
     <section class="hero is-info is-small">
@@ -10,7 +11,7 @@
           <% books.first(5).each do |book| %>
             <div class="column is-flex-direction-column">
               <img style="width: 180px; height: 280px; object-fit: cover;" src="https://covers.openlibrary.org/b/id/<%=book.cover_identifier%>-M.jpg" alt="<%=book%> Cover Art">
-              <p class=""><%= link_to book.title, books_path(book)%></p>
+              <p class=""><%= link_to book.title, book%></p>
             </div>
           <%end%>
   </div>
