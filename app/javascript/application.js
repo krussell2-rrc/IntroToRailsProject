@@ -13,3 +13,19 @@ document.addEventListener("turbo:load", () => {
     });
   }
 });
+
+document.addEventListener("turbo:load", function () {
+  const dropdown = document.getElementById("myDropdown");
+  const trigger = dropdown.querySelector(".dropdown-trigger button");
+
+  trigger.addEventListener("click", function () {
+    dropdown.classList.toggle("is-active"); // Toggle dropdown visibility
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!dropdown.contains(event.target)) {
+      dropdown.classList.remove("is-active");
+    }
+  });
+});
