@@ -39,15 +39,14 @@ subjects.each do |subject|
       end
 
       # Create the Book records
-      book = Book.create!(
-        title: title,
-        description: description,
-        subject: book_subject,
-        first_publish_year: first_publish_year,
-        edition_count: edition_count,
-        cover_identifier: cover_identifier,
-        work_key: work_key
-      )
+      book = Book.find_or_create_by(work_key: work_key) do |b|
+        b.title = title
+        b.description = description
+        b.subject = book_subject
+        b.first_publish_year = first_publish_year
+        b.edition_count = edition_count
+        b.cover_identifier = cover_identifier
+      end
 
         # Fetch the author(s) for this work
         authors = work["authors"]

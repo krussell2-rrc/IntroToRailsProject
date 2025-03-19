@@ -1,14 +1,39 @@
-<%content_for :title, "Books"%>
+<% content_for :title, "Books" %>
 <h1 class="title is-1 has-text-centered">Our Book Collection</h1>
-  <div class="grid is-col-min-12">
-  <% @books.each do |book| %>
-    <div class="cell ml-5">
-      <img style="width: 180px; height: 280px; object-fit: cover;" src="https://covers.openlibrary.org/b/id/<%=book.cover_identifier%>-M.jpg" alt="<%=book.title%> Cover Art">
-      <p><%= link_to book.title, book%></p>
-      </div>
-  <%end%>
-  </div>
 
+<!-- Search Form -->
+<%= search_form_for @q, url: all_books_path, method: :get do |f| %>
+<div class="is-flex is-justify-content-right">
+  <div class="field has-addons mb-5 mr-5">
+      <div class="control">
+        <%= f.search_field :title_cont, class: "input", placeholder: "Search by Title" %>
+      </div>
+      <div class="control">
+        <%= f.submit "Search", class:"button is-info" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<!-- Display Books (Search Results OR All Books) -->
+<% if @books.any? %>
+  <% if params[:q].present? %>
+    <%= link_to "< All Books", all_books_path, class: "ml-5" %>
+  <% end %>
+  <div class="grid is-col-min-12 mt-5">
+    <% @books.each do |book| %>
+      <div class="cell ml-5">
+        <img style="width: 180px; height: 280px; object-fit: cover;"
+             src="https://covers.openlibrary.org/b/id/<%= book.cover_identifier %>-M.jpg"
+             alt="<%= book.title %> Cover Art">
+        <p><%= link_to book.title, book %></p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No books found matching your search.</p>
+<% end %>
+
+<!-- Pagination -->
 <div class="pagination is-flex is-justify-content-center mt-5 mb-5">
   <%= paginate @books %>
 </div>

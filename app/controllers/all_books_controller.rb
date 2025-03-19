@@ -1,6 +1,7 @@
 class AllBooksController < ApplicationController
   def index
-    @books = Book.page(params[:page]).per(15)
+    @q = Book.ransack(params[:q])
+    @books = @q.result(distinct: true).page(params[:page]).per(15)
   end
 
   def show
