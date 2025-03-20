@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  get "author/show"
   get "search", to: "search#index"
   get "/about", to: "about#about"
   resources :books, path: "index", only: [ :index, :show ]
   resources :all_books, path: "books", only: [ :index, :show ]
-  resources :authors, only: [ :index, :show ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -2,7 +2,7 @@
 <h1 class="title is-2 ml-5"><%=@book.title%></h1>
 <div class="columns">
   <div class="column is-flex is-justify-content-space-between">
-    <img style="width: 300px; height: 400px; object-fit: cover;" class="ml-5"src="https://covers.openlibrary.org/b/id/<%=@book.cover_identifier%>-L.jpg" alt="<%=@book.title%> Cover Art">
+    <img style="width: 300px; height: 400px; object-fit: cover;" class="ml-5" src="https://covers.openlibrary.org/b/id/<%=@book.cover_identifier%>-L.jpg" alt="<%=@book.title%> Cover Art">
     <ul>
       <li style="width: 80%;" class="block is-family-code ml-5 is-size-5"><%=@book.description%></li>
       <li class="block is-family-code ml-5 is-size-5">Author(s): <%=@book.authors.map(&:author_name).join(", ")%></li>

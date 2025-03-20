@@ -23,7 +23,7 @@
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
               <%= f.select :subject_eq, options_for_select(Book.pluck(:subject).uniq, @q.subject_eq),
-              { include_blank: "Select a Subject" }, class: "input is-capitalized" %>
+              { include_blank: "Select a Genre" }, class: "input is-capitalized" %>
           </div>
         </div>
       </div>

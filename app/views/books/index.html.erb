@@ -4,7 +4,7 @@
     <section class="hero is-info is-small">
       <div class="hero-body is-flex is-justify-content-space-between">
         <h3 class=" is-size-5 has-text-weight-bold is-capitalized"><%=subject%> Books</h3>
-        <a href="">See More ></a>
+        <%= link_to "See More >", all_books_path(q: { subject_eq: "#{subject}" }), class: "ml-5" %>
       </div>
     </section>
     <div class="columns mt-5">
