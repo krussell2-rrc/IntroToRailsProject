@@ -5,8 +5,11 @@
     <img style="width: 300px; height: 400px; object-fit: cover;" class="ml-5" src="https://covers.openlibrary.org/b/id/<%=@book.cover_identifier%>-L.jpg" alt="<%=@book.title%> Cover Art">
     <ul>
       <li style="width: 80%;" class="block is-family-code ml-5 is-size-5"><%=@book.description%></li>
-      <li class="block is-family-code ml-5 is-size-5">Author(s): <%=@book.authors.map(&:author_name).join(", ")%></li>
-      <li class="block is-family-code ml-5 is-size-5">First Publish Year: <%=@book.first_publish_year%></li>
+      <li class="is-family-code ml-5 is-size-5">Author(s):</li>
+      <%@book.authors.each do |author|%>
+        <li class="is-family-code ml-5 is-size-5"><%= link_to author.author_name, author%></li>
+      <%end%>
+      <li class="block is-family-code ml-5 mt-5 is-size-5">First Publish Year: <%=@book.first_publish_year%></li>
       <li class="block is-family-code ml-5 is-size-5">Edition Count: <%=@book.edition_count%></li>
       <li class="block is-family-code is-capitalized ml-5 is-size-5">Genre: <%=@book.subject%></li>
     </ul>
