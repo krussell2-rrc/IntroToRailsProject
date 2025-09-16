@@ -9,7 +9,7 @@ PAUSE = ENV.fetch("SEED_PAUSE", 0.2).to_f
 def fetch_with_retry(url, retries: ENV.fetch("SEED_RETRIES", 5).to_i, timeout: ENV.fetch("SEED_TIMEOUT", 8).to_i)
   tries = 0
   begin
-    HTTParty.get(url, headers: { "User-Agent" => "IntroRailsSeeder/1.0 (contact: your@email)" }, timeout: timeout)
+    HTTParty.get(url, headers: { "User-Agent" => "IntroRailsSeeder/1.0 (contact: kareemrussell04@gmail.com)" }, timeout: timeout)
   rescue => e
     tries += 1
     if tries <= retries
