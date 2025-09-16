@@ -33,3 +33,8 @@ cable:
   adapter: postgresql
   url: <%= ENV["DATABASE_URL"] %>
   pool: 5
+
+queue:
+  adapter: postgresql
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: 5
