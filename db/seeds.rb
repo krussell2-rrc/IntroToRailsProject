@@ -1,7 +1,6 @@
 require "httparty"
 
 # Configurable vars
-LIMIT = ENV.fetch("SEED_LIMIT", 50).to_i
 PAGES = ENV.fetch("SEED_PAGES", 2).to_i
 PAUSE = ENV.fetch("SEED_PAUSE", 0.2).to_f
 
@@ -30,7 +29,7 @@ subjects.each do |subject|
 
   PAGES.times do |page|
     encoded_term = URI.encode_www_form_component(subject)
-    url = "https://openlibrary.org/subjects/#{encoded_term}.json?limit=#{LIMIT}&offset=#{page * LIMIT}"
+    url = "https://openlibrary.org/subjects/#{encoded_term}.json?limit=200&offset=#{page * 200}"
     response = fetch_with_retry(url)
     next unless response&.success?
 
