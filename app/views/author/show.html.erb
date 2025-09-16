@@ -1,8 +1,8 @@
-<%content_for(:html_title){@author.author_name}%>
+<%content_for :title, @author.author_name%>
 <h1 class="title is-2 ml-5"><%=@author.author_name%></h1>
 <div class="columns">
   <div class="column is-flex is-justify-content-space-between">
-  <p style="width: 80%;" class="block is-family-code ml-5 is-size-5"><%=@author.biography%></li>
+  <p style="width: 80%;" class="block is-family-code ml-5 is-size-5"><%=@author.biography%></p>
   </div>
 </div>
 <div class="grid is-col-min-12 mt-5">

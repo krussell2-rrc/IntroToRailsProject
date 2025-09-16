@@ -3,27 +3,29 @@
 
 <!-- Search Form -->
 <%= search_form_for @q, url: all_books_path, method: :get do |f| %>
-<div class="is-flex is-justify-content-right">
-  <div class="field has-addons mb-5 mr-5">
+  <div class="is-flex is-justify-content-right">
+    <div class="field has-addons mb-5 mr-5">
       <div class="dropdown" id="myDropdown">
         <div class="dropdown-trigger">
-        <div class="control">
+          <div class="control">
             <button type="button" class="input has-text-centered" aria-haspopup="true" aria-controls="dropdown-menu">
-              <%if params.dig(:q, :subject_eq).present?%>
-                <span class="is-capitalized"><%=params[:q][:subject_eq]%></span>
-              <%else%>
+              <% if params.dig(:q, :subject_eq).present? %>
+                <span class="is-capitalized"><%= params[:q][:subject_eq] %></span>
+              <% else %>
                 <span>Filter By</span>
-              <%end%>
-            <span class="icon is-small">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </button>
-        </div>
+              <% end %>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
-              <%= f.select :subject_eq, options_for_select(Book.pluck(:subject).uniq, @q.subject_eq),
-              { include_blank: "Select a Genre" }, class: "input is-capitalized" %>
+            <%= f.select :subject_eq,
+                  options_for_select(Book.pluck(:subject).uniq, @q.subject_eq),
+                  { include_blank: "Select a Genre" },
+                  class: "input is-capitalized" %>
           </div>
         </div>
       </div>
@@ -31,11 +33,11 @@
         <%= f.search_field :title_cont, class: "input", placeholder: "Search by Title" %>
       </div>
       <div class="control">
-        <%= f.submit "Search", class:"button is-info" %>
+        <%= f.submit "Search", class: "button is-info" %>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 <!-- Display Books (Search Results OR All Books) -->
 <% if @books.any? %>
   <% if params[:q].present? %>
